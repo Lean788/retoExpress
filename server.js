@@ -7,7 +7,6 @@ let db = require('./db.js');
 app.set('json spaces', 2);
 const PORT = process.env.PORT || 3000;
 
-const carsModel = require('./models/carModel.js');
 const carsRouter = require('./views/carsRouter.js');
 
 // Middleware

@@ -1,29 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send(carsModel.findAll());
-});
+const carsController = require('../controllers/carsController.js');
 
-router.get('/:id', (req, res) => {
-    const  { id } = req.params;
-    res.json( carsModel.findById(id) );
-});
+router.get('/', carsController.getAll);
 
-router.post('/', (req, res) => {
-    const  { body } = req;
-    return res.json(carsModel.create(body));
-});
+router.get('/:id', carsController.getById);
 
-router.put('/:id', (req, res) => {
-    const  { id } = req.params;
-    const { body } = req;
-    res.json(carsModel.update({id, ...body}))
-});
+router.post('/', carsController.create);
 
-router.delete('/:id', (req, res) => {
-    const  { id } = req.params;
-    res.json(carsModel.delete(id));
-});
+router.put('/:id', carsController.update);
+
+router.delete('/:id', carsController.delete);
 
 module.exports = router;
