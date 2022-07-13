@@ -4,6 +4,7 @@ const carsController = {};
 carsController.getAll = (req, res) => {
     let cars = carsModel.findAll()
     if(!cars) {
+        
         return res.status(404).json({
             success: false,
             message: 'cars not found',
@@ -22,6 +23,7 @@ carsController.getById = (req, res) => {
     const  { id } = req.params;
     let car = carsModel.findById(id);
     if(!car) {
+        
         return res.status(404).json({
             success: false,
             message: 'car not found',
@@ -41,6 +43,7 @@ carsController.create = (req, res) => {
     const  { body } = req;
     let newCar = carsModel.create(body);
     if(!newCar) {
+        
         return res.status(404).json({
             success: false,
             message: 'newCar has not been created',
@@ -60,6 +63,7 @@ carsController.update = (req, res) => {
     const { body } = req;
     let updatedCar = carsModel.update({id, ...body});
     if(!updatedCar) {
+        
         return res.status(404).json({
             success: false,
             message: 'updatedCar has not been modified',
@@ -78,6 +82,7 @@ carsController.delete = (req, res) => {
     const  { id } = req.params;
     let deletedCar = carsModel.delete(id);
     if(!deletedCar) {
+
         return res.status(500).json({
             success: false,
             message: 'Car has not been deleted',
